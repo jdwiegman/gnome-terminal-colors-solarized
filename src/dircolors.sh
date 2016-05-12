@@ -13,7 +13,7 @@ dl_dircolors() {
   valid=$?
   if [ ! "$valid" == "0" -o ! -e "$DIRCOLORS_SOLARIZED/dircolors" ]
     then echo -e "Download failed, dircolors will not be copied but you "
-    echo -en "install it from the official repository : "
+    echo -en "can install it from the official repository : "
     echo "$DIRCOLORS_REPO_ADRESS"
     return 1
   fi
@@ -28,19 +28,19 @@ copy_dicolors() {
     dl_ok=$?
     then if [ $dl_ok ]
       then mv "$DIRCOLORS_DIR/dircolors" "$DIRCOLORS_DIR/dircolors.old"
-      echo -e "$DIRCOLORS_DIR/dircolors already exists, moving it as"
+      echo -e "$DIRCOLORS_DIR/dircolors already exists, renaming it to"
       echo "dircolors.old"
     fi
   fi
   cp "$DIRCOLORS_SOLARIZED/dircolors" "$DIRCOLORS_DIR/dircolors"
   echo
-  echo "The new dircolors is copied as $DIRCOLORS_DIR/dircolors."
+  echo "The new dircolors have been installed to $DIRCOLORS_DIR/dircolors."
   echo
-  echo "Add \"eval \`dircolors /path/to/dircolorsdb\`\" in your in your shell "
-  echo "configuration file (.bashrc, .zshrc, etc...) to use the new dircolors."
+  echo "Add \"eval \`dircolors /path/to/dircolorsdb\`\" in your shell "
+  echo "configuration file (.bashrc, .zshrc, etc...) to use new dircolors."
   echo
-  echo -en "Do not forget to remove the old dircolors in your shell "
-  echo -en "configuration file if it was named differently than "
+  echo -en "Do not forget to remove old dircolors from your shell "
+  echo -en "configuration file if they were named differently than "
   echo -en "\"dircolors\".\n"
   echo
 }
@@ -53,16 +53,16 @@ interactive_dircolors() {
     echo -en "A dircolors already exists, but can be incompatible with the "
     echo -en "solarized color scheme causing some colors problems when doing "
     echo -en "a \"ls\".\n"
-    echo -e "\n"
-    echo -en "1) Replace the actual dircolors by the seebi' "
-    echo -en "dircolors-solarized :\n"
-    echo -en "   https://github.com/seebi/dircolors-solarized (the actual "
-    echo -en "dircolors will be \nkeeped as backup).\n"
     echo
-    echo -en "2) [DEFAULT] I am awared about this potentiall problem and will"
-    echo -en "check my \n   dircolors (default path: ~/.dir_colors/dircolors) "
+    echo -en "1) Replace the actual dircolors by seebi' "
+    echo -en "dircolors-solarized: "
+    echo -en "https://github.com/seebi/dircolors-solarized (the actual "
+    echo -en "dircolors will be keeped as backup).\n"
+    echo
+    echo -en "2) [DEFAULT] I am awared about this potentiall problem and will "
+    echo -en "check my dircolors (default path: ~/.dir_colors/dircolors) "
     echo -en "in case of conflict.\n"
-    echo -e "\n"
+    echo
     read -p "Enter your choice : [2] " selection
     selection=${selection:-2}
 
